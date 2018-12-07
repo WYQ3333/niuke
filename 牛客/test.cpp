@@ -11,8 +11,9 @@ public:
 		}
 		int blankcount = 0;
 		int totalcount = 0;
-		while (*str != '\0'){
-			if (*str == ' '){
+		int i = 0;
+		for (i = 0; str[i] != '\0'; ++i){
+			if (str[i] == ' '){
 				blankcount++;
 			}
 			totalcount++;
@@ -82,7 +83,7 @@ int main()
 {
 	char *str = "Hello world ,it is beautiful!";
 	Solution s1;
-	s1.replaceSpace(str, strlen(str));
+	s1.replaceSpace(str, 30);
 	system("pause");
 	return 0;
 }

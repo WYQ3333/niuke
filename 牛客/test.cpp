@@ -91,6 +91,7 @@
 
 #include<iostream>
 using namespace std;
+#if 0
 int jumpFloor(int number) {
 	if (0 == number || 1 == number || number == 2){
 		return number;
@@ -106,6 +107,12 @@ int jumpFloor(int number) {
 	return a;
 }
 //青蛙跳台阶（一次可以跳1,2....n阶）
+//因为n级台阶，第一步有n种跳法：跳1级、跳2级、到跳n级
+//跳1级，剩下n - 1级，则剩下跳法是f(n - 1)
+//跳2级，剩下n - 2级，则剩下跳法是f(n - 2)
+//所以f(n) = f(n - 1) + f(n - 2) + ... + f(1)
+//因为f(n - 1) = f(n - 2) + f(n - 3) + ... + f(1)
+//所以f(n) = 2 * f(n - 1)
 int jumpFloorII(int number) {
 	if (0 == number){
 		return 0;
@@ -137,9 +144,25 @@ int rectCover(int number) {
 	}
 	return b;
 }
-
+#endif
+//求整数n中1的个数
+int  NumberOf1(int n) {
+	int count = 0;
+	unsigned int c = 1;
+	while (c){
+		if ((n & c)){//注意，不能写成：，因为按位与之后这个肯定不等于1，加了这个后铁错
+			count++;
+		}
+		c = c << 1;
+	}
+	return count;
+}
+void test(int n){
+	cout << sizeof(n)*8 << endl;
+}
 int main(){
-	cout<<jumpFloor(4)<<endl;
+	test(10);
+	//cout<<jumpFloor(4)<<endl;
 	system("pause");
 	return 0;
 }
